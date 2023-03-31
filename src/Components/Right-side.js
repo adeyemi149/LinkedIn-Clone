@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function rightside() {
+const Rightside = () => {
   return (
 	<Container>
 		<FollowCard>
@@ -41,7 +41,7 @@ function rightside() {
   )
 }
 
-export default rightside;
+export default Rightside;
 
 
 const Container = styled.div`

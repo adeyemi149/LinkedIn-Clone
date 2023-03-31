@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import React from 'react'
 import {postArticleAPI} from "../actions"
 
-function PostModal(props) {
+const PostModal = (props) => {
 	const [editorText, setEditorText] = useState("");
 	const [shareImg, setShareImage] = useState("");
 	const [videolink, setVideoLink] = useState("");
@@ -231,6 +231,14 @@ const SharedCreation = styled.div`
 	padding: 12px 24px 12px 16px;
 `
 
+const AssestButton = styled.button`
+	display: flex;
+	align-items: center;
+	height: 40px;
+	min-width: auto;
+	color: rgba(0, 0, 0, .5);
+`
+
 const AttachAssests = styled.div`
 	display: flex;
 	align-items: center;
@@ -239,14 +247,6 @@ const AttachAssests = styled.div`
 	${AssestButton} {
 		width: 48px;
 	}
-`
-
-const AssestButton = styled.button`
-	display: flex;
-	align-items: center;
-	height: 40px;
-	min-width: auto;
-	color: rgba(0, 0, 0, .5);
 `
 
 const SharedComment = styled.div`

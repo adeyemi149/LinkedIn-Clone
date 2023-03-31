@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-function leftside(props) {
+const Leftside = (props) => {
   return (
 	<Container>
 		<ArtCard>
@@ -58,7 +58,7 @@ const Container = styled.div`
 	position: fixed;
 	grid-area: leftside;
 
-	@media (max-width: 768px) {
+	@media (min-width: 768px) {
 		position: inherit;
 	}
 `
@@ -229,4 +229,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(leftside);
+export default connect(mapStateToProps)(Leftside);

@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 import { getArticlesAPI } from "../actions/index"
 import ReactPlayer from "react-player"
 
-function main(props) {
+const Main = (props) => {
 	const [showModal, setShowModal] = useState("close");
 	let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 	useEffect(() => {
@@ -73,7 +73,7 @@ function main(props) {
 			</div>
 		  </ShareBox>
 		  <Content>
-				{props.loading && <img src='./images/Spin.svg' />}
+				{props.loading && <img src='/images/Spin.svg' />}
 						{ props.articles.length > 0 && props.articles.map((article, key) => (
 							<Article key={key}>
 								<SharedActor>
@@ -95,7 +95,7 @@ function main(props) {
 								<SharedImg>
 									<a>
 										{!article.sharedImg && article.video
-											? (<ReactPlayer width={"100%"} url={article.video} />)
+											? (<ReactPlayer controls width={"100%"} url={article.video} />)
 											: (article.sharedImg && <img src={article.sharedImg} />)
 										}
 									</a>
@@ -379,4 +379,4 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(getArticlesAPI()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

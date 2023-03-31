@@ -7,7 +7,7 @@ import Leftside from "./Left-side"
 import Main from "./Main"
 import Rightside from "./Right-side"
 
-function Home(props) {
+const Home = (props) => {
 	console.log(props.user)
 	return (
 		<Container>

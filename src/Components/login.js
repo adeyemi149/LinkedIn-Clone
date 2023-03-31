@@ -4,7 +4,7 @@ import {connect} from "react-redux"
 import { signInAPI } from "../actions/index"
 import { Redirect } from 'react-router-dom'
 
-const login = (props) => {
+const Login = (props) => {
   return (
 	  <Container>
 		  {props.user && <Redirect to="/home"/>}
@@ -210,4 +210,4 @@ const mapDispatchToProps = (dispatch) => ({
 	signIn: () => dispatch(signInAPI()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

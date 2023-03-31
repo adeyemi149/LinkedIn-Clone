@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {signOutAPI} from "../actions"
 
-function Header(props) {
+const Header = (props) => {
   return (
 	<Container>
 		<Content>
