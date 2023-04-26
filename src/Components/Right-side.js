@@ -4,39 +4,41 @@ import styled from 'styled-components'
 const Rightside = () => {
   return (
 	<Container>
-		<FollowCard>
-			  <Title>
-				  <h2>Add to you feed</h2>
-				  <img src='/images/feed-icon.svg' />
-			  </Title>
-			  <FeedList>
-				  <li>
-					  <a>
-						  <Avatar />
-					  </a>
-					  <div>
-						  <span>#Linkedin</span>
-						  <button>Follow</button>
-					  </div>
-				  </li>
-				  <li>
-					  <a>
-						  <Avatar />
-					  </a>
-					  <div>
-						  <span>#Video</span>
-						  <button>Follow</button>
-					  </div>
-				  </li>
-			  </FeedList>
-			  <Recommendation>
-				  View all Recommendation
-				  <img src='/images/right-icon.svg' />
-			  </Recommendation>
-		  </FollowCard>
-		  <BannerCard>
-			  <img src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg" />
-		  </BannerCard>
+		<Content>
+			<FollowCard>
+				  <Title>
+					  <h2>Add to you feed</h2>
+					  <img src='/images/feed-icon.svg' />
+				  </Title>
+				  <FeedList>
+					  <li>
+						  <a>
+							  <Avatar />
+						  </a>
+						  <div>
+							  <span>#Linkedin</span>
+							  <button>Follow</button>
+						  </div>
+					  </li>
+					  <li>
+						  <a>
+							  <Avatar />
+						  </a>
+						  <div>
+							  <span>#Video</span>
+							  <button>Follow</button>
+						  </div>
+					  </li>
+				  </FeedList>
+				  <Recommendation>
+					  View all Recommendation
+					  <img src='/images/right-icon.svg' />
+				  </Recommendation>
+			  </FollowCard>
+			  <BannerCard>
+				  <img src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg" />
+			  </BannerCard>
+		</Content>
 	</Container>
   )
 }
@@ -46,6 +48,18 @@ export default Rightside;
 
 const Container = styled.div`
 	grid-area: rightside;
+
+`
+
+const Content = styled.div`
+	@media (min-width: 768px) {
+		position: sticky;
+		position: -webkit-sticky;
+		position: -moz-sticky;
+		position: -ms-sticky;
+		position: -o-sticky;
+		top: 54px;
+	}
 `
 
 const FollowCard = styled.div`
@@ -125,5 +139,14 @@ const BannerCard = styled(FollowCard)`
 		height: 100%;
 		border-radius: 5px;
 	}
+
+	/* @media (min-width: 768px) {
+		position: sticky;
+		position: -webkit-sticky;
+		position: -moz-sticky;
+		position: -ms-sticky;
+		position: -o-sticky;
+		top: 54px;
+	} */
 `
 

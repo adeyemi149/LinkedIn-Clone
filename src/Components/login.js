@@ -175,7 +175,6 @@ const Google = styled.div`
 	}
 
 	@media (max-width: 768px) {
-		max-width: 450px;
 		margin: auto;
 	}
 

@@ -5,62 +5,80 @@ import styled from 'styled-components'
 const Leftside = (props) => {
   return (
 	<Container>
-		<ArtCard>
-			<UserInfo>
-				<CardBackground />
-					<a>
-						<Photo />
-					  <Link>Welcome, {props.user
-						  ? props.user.displayName : "there"}!</Link>
-					</a>
-					<a>
-						<AddPhotoText>Add a photo</AddPhotoText>
-					</a>
-			</UserInfo>
-			<Widget>
-					<a>
-						<div>
-						<span>Connections</span>
-						<span>Grow your network</span>
-						</div>
-						<img src='/images/widget-icon.svg' />
-					</a>
-			</Widget>
-			<Item>
-				<span>
-					<img src="/images/item-icon.svg" />
-					<span>My Items</span>
-				</span>
-			</Item>
-		</ArtCard>
-		<CommunityCard>
-			<a>
-				<span>Groups</span>
-			</a>
-			<a>
-				<span>Events
-					<img src='/images/plus-icon.svg' />
-				</span>
-			</a>
-			<a>
-				<span>Follow Hashtags</span>
-			</a>
-			<a>
-				<span>Discover more</span>
-			</a>
-		</CommunityCard>
+		<Content>
+			<ArtCard>
+				<UserInfo>
+					<CardBackground />
+						<a>
+							<Photo />
+						  <Link>Welcome, {props.user
+							  ? props.user.displayName : "there"}!</Link>
+						</a>
+						<a>
+							<AddPhotoText>Add a photo</AddPhotoText>
+						</a>
+				</UserInfo>
+				<Widget>
+						<a>
+							<div>
+							<span>Connections</span>
+							<span>Grow your network</span>
+							</div>
+							<img src='/images/widget-icon.svg' />
+						</a>
+				</Widget>
+				<Item>
+					<span>
+						<img src="/images/item-icon.svg" />
+						<span>My Items</span>
+					</span>
+				</Item>
+			</ArtCard>
+			<CommunityCard>
+				<a>
+					<span>Groups</span>
+				</a>
+				<a>
+					<span>Events
+						<img src='/images/plus-icon.svg' />
+					</span>
+				</a>
+				<a>
+					<span>Follow Hashtags</span>
+				</a>
+				<a>
+					<span>Discover more</span>
+				</a>
+			</CommunityCard>
+		</Content>
 	</Container>
   )
 }
 
 
 const Container = styled.div`
-	position: fixed;
 	grid-area: leftside;
 
 	@media (min-width: 768px) {
-		position: inherit;
+		position: sticky;
+	position: -webkit-sticky;
+	position: -moz-sticky;
+	position: -ms-sticky;
+	position: -o-sticky;
+	top: 54px;
 	}
+
+`
+
+const Content = styled.div`
+	@media (min-width: 768px) {
+	position: sticky;
+	position: -webkit-sticky;
+	position: -moz-sticky;
+	position: -ms-sticky;
+	position: -o-sticky;
+	top: 54px;
+			}
 `
 
 const ArtCard = styled.div`
@@ -164,9 +182,6 @@ const Widget = styled.div`
 		
 		
 	}
-	/* svg {
-		color: rgba(0, 0, 0, 1);
-	} */
 `
 
 const Item = styled.a`
@@ -194,6 +209,7 @@ const CommunityCard = styled(ArtCard)`
 	flex-direction: column;
 	text-align: left;
 	padding: 8px 0 0;
+	
 
 	a {
 		padding: 4px 12px 6px 20px;
@@ -220,6 +236,8 @@ const CommunityCard = styled(ArtCard)`
 			}
 		}
 	}
+
+	
 	
 `
 

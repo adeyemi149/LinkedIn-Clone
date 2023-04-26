@@ -1,15 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import { FcOldTimeCamera } from 'react-icons/fc';
 import { FcVideoFile } from 'react-icons/fc';
 import { FcGallery } from 'react-icons/fc';
 import { GiNotebook } from 'react-icons/gi';
-import { AiOutlineEllipsis } from 'react-icons/ai';
-import { AiFillLike } from 'react-icons/ai';
-import { FaPrayingHands } from 'react-icons/fa';
-import { AiOutlineLike } from 'react-icons/ai';
+import { AiOutlineEllipsis, AiOutlineLike } from 'react-icons/ai';
 import { FaRegComments } from 'react-icons/fa';
-import { FcShare } from 'react-icons/fc';
+import { HiShare } from 'react-icons/hi';
 import { FiSend } from 'react-icons/fi';
 import PostModal from "./PostModal"
 import { useState, useEffect } from "react";
@@ -42,8 +39,10 @@ const Main = (props) => {
 	}
 	return (
 		<>
-			{props.articles && props.articles.length === 0
-				? <p>There are no articles yet</p> 
+			{props.articles?.length === 0
+				? <Preloader>
+					<Loader />
+				</Preloader> 
 				: <Container >
 		  <ShareBox>
 		  	<div>
@@ -101,37 +100,26 @@ const Main = (props) => {
 									</a>
 								</SharedImg>
 								<SocialCount>
-									<li>
-										<button>
-											<AiFillLike style={style} />
-											<FaPrayingHands style={style} />
-											<span>75</span>
-										</button>
-									</li>
-									<li>
-										<button>
-											<a>{article.comments}</a>
-										</button>
-									</li>
+									
 								</SocialCount>
-								<SocilActions>
+								<SocialActions>
 									<button>
-										<AiOutlineLike style={style2} />
+										<AiOutlineLike />
 										<span>Like</span>
 									</button>
 									<button>
-										<FaRegComments style={style2} />
+										<FaRegComments />
 										<span>Comments</span>
 									</button>
 									<button>
-										<FcShare style={style2} />
+										<HiShare />
 										<span>Share</span>
 									</button>
 									<button>
-										<FiSend style={style2} />
+										<FiSend />
 										<span>Send</span>
 									</button>
-								</SocilActions>
+								</SocialActions>
 							</Article>
 						))}
 		 	</Content>
@@ -177,6 +165,10 @@ const ShareBox = styled(CommonCard)`
 			align-items: center;
 			font-weight: 600;
 			padding-left: 16px;
+
+			@media (max-width: 768px) {
+				padding-left: 5px;
+			}
 		}
 
 		&:first-child {
@@ -224,7 +216,6 @@ const ShareBox = styled(CommonCard)`
 
 const style = { fontSize: "1.5rem", margin: "0 4px 0 -2px " };
 
-const style2 = { fontSize: "1.5rem", margin: "0 4px 0 -2px ", color: "#0a66c2", marginRight: "0" };
 
 const Article = styled(CommonCard)`
 	padding: 0;
@@ -307,38 +298,12 @@ const SharedImg = styled.div`
 `
 
 const SocialCount = styled.ul`
-	list-style: none;
-	line-height: 1.3;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	overflow: auto;
-	margin: 0 16px;
-	padding: 8px 0;
-	border-bottom: 1px solid #e9e5df;
-
-	li {	
-		button {
-		border: none;
-		background: transparent;
-		display: flex;
-		align-items: center;
-	}
-
-	img {
-		width: 30px;
-		height: 30px;
-		background: transparent;
-		border: 0; 
-		}
-	}
 	
 `
 
-const SocilActions = styled.div`
+const SocialActions = styled.div`
 	display: flex;
-	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-evenly;
 	margin: 0;
 	min-height: 40px;
 	padding: 4px 8px;
@@ -346,16 +311,30 @@ const SocilActions = styled.div`
 	button {
 		display: flex;
 		align-items: center;
+		gap: 5px;
 		padding: 8px;
 		color: #0a66c0;
 		border: none;
 		background-color: white;
+		transition: 247ms;
+		cursor: pointer;
 
-		
-		@media (min-width: 768px) {
-			span {
-				margin-left: 8px;
+		svg {
+			color: #727272;
+			font-Size: .8rem;
+
+			@media (min-width: 881px) {
+				font-size: 2rem;
 			}
+		}
+
+		span {
+			color: #a8a8a9;
+			}
+
+		&:hover {
+			border-radius: 5px;
+			background-color: rgba(0, 0, 0, 0.09);
 		}
 	}
 `
@@ -366,6 +345,54 @@ const Content = styled.div`
 		width: 30px;
 	}
 `
+
+const Preloader = styled.div`
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`
+
+const Loader = styled.div`
+	& {
+		font-size: 10px;
+		width: 1em;
+		height: 1em;
+		border-radius: 50%;
+		position: relative;
+		text-indent: -9999em;
+		animation: mulShdSpin 1.1s infinite ease;
+		transform: translateZ(0);
+	}
+	@keyframes mulShdSpin {
+	0%,
+	100% {
+		box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.5), -1.8em -1.8em 0 0em rgba(255,255,255, 0.7);
+	}
+	12.5% {
+		box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.5);
+	}
+	25% {
+		box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.5), 1.8em -1.8em 0 0em rgba(255,255,255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+	}
+	37.5% {
+		box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.5), 2.5em 0em 0 0em rgba(255,255,255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+	}
+	50% {
+		box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.5), 1.75em 1.75em 0 0em rgba(255,255,255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255,255,255, 0.2), -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+	}
+	62.5% {
+		box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.5), 0em 2.5em 0 0em rgba(255,255,255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255,255,255, 0.2), -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+	}
+	75% {
+		box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.5), -1.8em 1.8em 0 0em rgba(255,255,255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255,255,255, 0.2);
+	}
+	87.5% {
+		box-shadow: 0em -2.6em 0em 0em rgba(255,255,255, 0.2), 1.8em -1.8em 0 0em rgba(255,255,255, 0.2), 2.5em 0em 0 0em rgba(255,255,255, 0.2), 1.75em 1.75em 0 0em rgba(255,255,255, 0.2), 0em 2.5em 0 0em rgba(255,255,255, 0.2), -1.8em 1.8em 0 0em rgba(255,255,255, 0.5), -2.6em 0em 0 0em rgba(255,255,255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+	}
+	}
+`
+
 const mapStateToProps = (state) => {
 	return {
 		loading: state.articleState.loading,
