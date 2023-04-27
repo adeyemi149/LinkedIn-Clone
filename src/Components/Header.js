@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { signOutAPI } from "../actions"
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import { AiOutlineEllipsis } from 'react-icons/ai';
 
 
 const Header = (props) => {
@@ -55,7 +55,8 @@ const Header = (props) => {
 					  </NavList>
 					<CollapseDot onClick={toggleNavOptions}>
 						  <a>
-							  <BiDotsHorizontalRounded />
+							  <AiOutlineEllipsis />
+							  <span>More</span>
 						  </a>
 					</CollapseDot>
 					  {showOptions && 
@@ -216,6 +217,17 @@ const CollapseDot = styled.li`
 	position: relative;
 	transition: 247ms;
 
+	svg {
+		font-size: 1.5rem;
+	}
+
+	span {
+		color: rgba(0,0,0,0.6);
+		@media (max-width: 380px) {
+				display: none
+			}
+	}
+
 	a {
 		display: flex;
 		align-items: center;
@@ -229,7 +241,7 @@ const CollapseDot = styled.li`
 		position: relative;
 		text-decoration: none;
 	}
-	@media (min-width: 380px) {
+	@media (min-width: 400px) {
 		display: none;
 	}
 `
@@ -244,7 +256,6 @@ border-radius: 10px 10px 0 0;
 	display: flex;
 	gap: 10px;
 	list-style-type: none;
-	transition: 247ms;
 `
 
 const OptionOne = styled.li`
@@ -290,7 +301,7 @@ img {
 
 const LastNavList = styled.li`
 	display: flex;
-	@media (max-width: 380px) {
+	@media (max-width: 400px) {
 		display: none;
 	}
 `

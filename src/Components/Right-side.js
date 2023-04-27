@@ -48,7 +48,6 @@ export default Rightside;
 
 const Container = styled.div`
 	grid-area: rightside;
-
 `
 
 const Content = styled.div`
@@ -79,7 +78,7 @@ const Title = styled.div`
 	text-align: center;
 	font-size: 16px;
 	width: 100%;
-	color: rgba(0, 0, 0, 0.6)
+	color: rgba(0, 0, 0, 0.6);
 `
 
 const FeedList = styled.ul`
